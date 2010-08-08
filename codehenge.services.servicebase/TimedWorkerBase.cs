@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 
 namespace codehenge.services.servicebase
@@ -11,6 +10,7 @@ namespace codehenge.services.servicebase
 		//  Overridden Methods
 		//
 		//--------------------------------------------------------------------------
+		
 
 		#region Overridden Methods
 		/// <summary>
@@ -20,14 +20,12 @@ namespace codehenge.services.servicebase
 		{
 			while (!Ending)
 			{
-				Logger.Write(EventLogEntryType.Information, "Running service: " + this.GetType().ToString());
 				try
 				{
 					Fire();
 				}
 				catch (Exception ex)
 				{
-					Logger.Write(ex, this.GetType().ToString() + ": Unexpected exception.");
 					ServiceStarted = false;
 				}
 
@@ -43,7 +41,6 @@ namespace codehenge.services.servicebase
 			}
 
 			ServiceStarted = false;
-			Logger.Write(EventLogEntryType.Information, this.GetType().ToString() + " : Exiting service...");
 		}
 		#endregion
 

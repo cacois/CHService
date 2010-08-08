@@ -55,7 +55,7 @@ namespace codehenge.services.servicebase
 
 		public virtual void Start()
 		{
-			_thread = new Thread(new ThreadStart(Execute));
+			_thread = new Thread(Execute);
 			_thread.Start();
 
 			_serviceStarted = true;

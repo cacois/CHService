@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -38,7 +37,6 @@ namespace codehenge.services.servicebase
 			{
 				if (!listening)
 				{
-					Logger.Write(EventLogEntryType.Information, this.GetType().ToString() + " starting to listen on port " + GetPort());
 					listening = true;
 					listener = new TcpListener(IPAddress.Any, GetPort());
 					listener.Start();
@@ -55,7 +53,6 @@ namespace codehenge.services.servicebase
 				}
 				catch (Exception ex)
 				{
-					Logger.Write(ex, "Agent error: " + this.GetType().ToString() + " - error listening");
 					ServiceStarted = false;
 					accepting = false;
 				}
@@ -65,7 +62,6 @@ namespace codehenge.services.servicebase
 
 			try
 			{
-				Logger.Write(EventLogEntryType.Information, this.GetType().ToString() + " : Exiting service...");
 				ServiceStarted = false;
 				listener.Stop();
 				listening = false;
@@ -73,7 +69,7 @@ namespace codehenge.services.servicebase
 			}
 			catch (Exception ex)
 			{
-				Logger.Write(ex, "Agent error: Error stopping " + this.GetType().ToString());
+				Console.Out.WriteLine("Agent error: Error stopping " + this.GetType().ToString() + " Exception: " + ex);
 			}
 		} 
 		#endregion

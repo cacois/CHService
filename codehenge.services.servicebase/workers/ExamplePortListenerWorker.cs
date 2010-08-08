@@ -32,13 +32,13 @@ namespace codehenge.services.servicebase
 		/// a new connection has been established, handle this request in a separate thread
 		/// </summary>
 		protected override void SocketAccept(IAsyncResult ar)
+
 		{
-			TextWriter tw = new StreamWriter("ExamplePortListenerWorker.log");
+			TextWriter tw = new StreamWriter(ConfigurationManager.AppSettings["LogPath"] + "ExamplePortListenerWorker.log", true);
 			DateTime acceptTime = DateTime.Now;
 			tw.WriteLine(DateTime.Now + " - connection accepted" );
 
 			string sBuffer = "";
-			string returnData = "";
 			Socket socket = null;
 
 			try
@@ -63,7 +63,6 @@ namespace codehenge.services.servicebase
 						// send a greeting back
 						string response = "Greetings!";
 						List<byte> responseBits = new List<byte>(Encoding.ASCII.GetBytes(response));
-						responseBits.Add(0x00);
 						socket.Send(responseBits.ToArray());
 						socket.Close();
 

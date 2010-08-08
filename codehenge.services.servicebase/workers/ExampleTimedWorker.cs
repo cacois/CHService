@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.IO;
 
 namespace codehenge.services.servicebase
@@ -22,7 +21,7 @@ namespace codehenge.services.servicebase
 		{
 			try
 			{
-				TextWriter tw = new StreamWriter("ExampleTimedWorker.log");
+				TextWriter tw = new StreamWriter(ConfigurationManager.AppSettings["LogPath"] + "ExampleTimedWorker.log", true);
 				tw.WriteLine(DateTime.Now + " - Firing ExampleTimedWorker timed action");
 				tw.Close();
 			}
