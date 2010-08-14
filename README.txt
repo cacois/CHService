@@ -1,9 +1,30 @@
-CHService v1.0
+CHService v1.0 
+
+A Framework for hassle-free creation of configurable services to run on MS Windows 
+Operating Systems.
+
+Copyright (C) 2010 Constantine Aaron Cois
+
+CHService is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with CHService; if not, see <http://www.gnu.org/licenses/>.
+
+
+Overview
+--------
 
 CHService is a framework for quickly and easily creating threaded, configurable MS Windows Services. 
 If you have ever worked on a .NET application requiring a number of processes to be run in the 
 background as windows services, this project is for you.
-
 
 CHService-derived Windows services run any number of 'worker' processes in separate threads, 
 and can be reconfigured to add/remove/change worker processes through one line in a 
